@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIGTICK — Music and Brews Unite for Talent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Rye&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0b0806;
+    --char:#17110d;
+    --char-2:#1f1712;
+    --rust:#7c2415;
+    --rust-2:#9c3520;
+    --maroon:#450e0a;
+    --gold:#c99a3e;
+    --gold-soft:#e0bc6e;
+    --cream:#efe2c0;
+    --cream-dim:#d8cba8;
+    --ash:#8f8171;
+    --line:rgba(239,226,192,0.12);
+    --radius:2px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--void);
+    color:var(--cream);
+    font-family:'Archivo', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  .wordmark{
+    font-family:'UnifrakturCook', serif;
+    color:var(--cream);
+    letter-spacing:0.5px;
+  }
+
+  h1,h2,h3{
+    font-family:'Rye', serif;
+    font-weight:400;
+    letter-spacing:0.5px;
+    line-height:1.15;
+    color:var(--cream);
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  section{
+    position:relative;
+    padding:104px 0;
+  }
+
+  .eyebrow{
+    font-size:13px;
+    color:var(--gold-soft);
+    letter-spacing:0.06em;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(11,8,6,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:16px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-logo{
+    font-size:26px;
+    font-family:'UnifrakturCook', serif;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav-logo .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--rust-2);
+    box-shadow:0 0 10px 2px var(--rust-2);
+    display:inline-block;
+  }
+  nav.links{
+    display:flex;
+    gap:36px;
+    font-size:14.5px;
+    color:var(--cream-dim);
+  }
+  nav.links a{
+    position:relative;
+    padding:4px 0;
+    transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--gold-soft);}
+  .nav-cta{
+    background:var(--rust);
+    color:var(--cream);
+    padding:10px 20px;
+    border-radius:var(--radius);
+    font-weight:600;
+    font-size:14px;
+    border:1px solid var(--rust-2);
+    transition:background .2s ease, transform .15s ease;
+  }
+  .nav-cta:hover{background:var(--rust-2); transform:translateY(-1px);}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;}
+
+  @media (max-width:860px){
+    nav.links{
+      position:absolute;
+      top:100%;left:0;right:0;
+      background:var(--char);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      gap:0;
+      display:none;
+      padding:8px 0;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:14px 32px; width:100%;}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:190px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 700px 500px at 82% 30%, rgba(124,36,21,0.35), transparent 65%),
+      radial-gradient(ellipse 900px 700px at 10% 90%, rgba(69,14,10,0.4), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .presented{
+    font-size:13px;
+    color:var(--ash);
+    letter-spacing:0.04em;
+    margin-bottom:26px;
+  }
+  .presented b{color:var(--cream-dim); font-weight:600;}
+  .hero h1{
+    font-size:clamp(44px, 6vw, 78px);
+    color:var(--cream);
+    text-shadow:2px 2px 0 var(--rust), 4px 4px 0 rgba(0,0,0,0.4);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--gold-soft);
+    text-shadow:2px 2px 0 var(--maroon), 4px 4px 0 rgba(0,0,0,0.4);
+  }
+  .hero p.lede{
+    margin-top:26px;
+    max-width:480px;
+    font-size:17px;
+    color:var(--cream-dim);
+  }
+  .hero-actions{
+    margin-top:40px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:15px 28px;
+    border-radius:var(--radius);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.02em;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{
+    background:var(--rust);
+    color:var(--cream);
+    border:1px solid var(--rust-2);
+  }
+  .btn-primary:hover{background:var(--rust-2); transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);
+    color:var(--cream-dim);
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  /* Spinning vinyl — the one animated signature moment */
+  .vinyl-stage{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    max-width:420px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .vinyl-stage::before{
+    content:"";
+    position:absolute;
+    width:78%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(201,154,62,0.22), transparent 68%);
+    filter:blur(6px);
+  }
+  .vinyl{
+    position:relative;
+    width:72%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:
+      0 18px 50px rgba(0,0,0,0.6),
+      inset 0 0 0 1px rgba(239,226,192,0.06);
+    animation:spin 7s linear infinite;
+  }
+  .vinyl img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  @keyframes spin{
+    to{transform:rotate(360deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .vinyl{animation:none;}
+  }
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .vinyl-stage{margin-top:40px;}
+  }
+
+  /* ---------- JUKEBOX ---------- */
+  .jukebox{
+    background:var(--char);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:56px 0;
+  }
+  .jukebox-inner{
+    display:flex;
+    align-items:center;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .jukebox-disc{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    flex-shrink:0;
+    overflow:hidden;
+    animation:spin 3s linear infinite;
+    animation-play-state:paused;
+    box-shadow:0 6px 16px rgba(0,0,0,0.5);
+  }
+  .jukebox-disc img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .jukebox-disc.playing{animation-play-state:running;}
+  .jukebox-text{flex:1; min-width:220px;}
+  .jukebox-text .eyebrow{margin-bottom:6px;}
+  .jukebox-text h3{
+    font-family:'Rye', serif;
+    font-size:22px;
+    margin-bottom:4px;
+  }
+  .jukebox-text p{font-size:14px; color:var(--ash);}
+  .jukebox-controls{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .file-btn{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .file-btn input[type="file"]{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    cursor:pointer;
+  }
+  .play-btn{
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--rust);
+    border:1px solid var(--rust-2);
+    color:var(--cream);
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease, transform .15s ease;
+    flex-shrink:0;
+  }
+  .play-btn:hover{background:var(--rust-2); transform:translateY(-1px);}
+  .play-btn:disabled{opacity:0.4; cursor:not-allowed; transform:none;}
+  .track-info{
+    min-width:180px;
+    flex:1;
+  }
+  .track-name{
+    font-size:13.5px;
+    color:var(--cream-dim);
+    margin-bottom:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .progress-track{
+    height:4px;
+    background:rgba(239,226,192,0.14);
+    border-radius:2px;
+    cursor:pointer;
+    position:relative;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--gold);
+    border-radius:2px;
+  }
+  .yt-input{
+    width:100%;
+    background:var(--void);
+    border:1px solid var(--line);
+    color:var(--cream);
+    font-family:'Archivo', sans-serif;
+    font-size:13.5px;
+    padding:9px 12px;
+    border-radius:var(--radius);
+    outline:none;
+    transition:border-color .2s ease;
+  }
+  .yt-input::placeholder{color:var(--ash);}
+  .yt-input:focus{border-color:var(--gold);}
+  .yt-player-holder{
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  @media (max-width:640px){
+    .jukebox-inner{flex-direction:column; align-items:flex-start;}
+    .jukebox-controls{width:100%;}
+    .track-info{width:100%;}
+  }
+
+  /* ---------- QR MODAL ---------- */
+  .qr-modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .qr-modal.open{display:flex;}
+  .qr-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(6,4,3,0.82);
+    backdrop-filter:blur(4px);
+  }
+  .qr-card{
+    position:relative;
+    z-index:2;
+    background:var(--char);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:40px 36px 34px;
+    max-width:360px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+    animation:qrPop .25s ease-out;
+  }
+  @keyframes qrPop{
+    from{opacity:0; transform:translateY(10px) scale(0.97);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .qr-close{
+    position:absolute;
+    top:14px; right:14px;
+    background:none;
+    border:none;
+    color:var(--ash);
+    font-size:16px;
+    cursor:pointer;
+    width:32px;height:32px;
+    border-radius:50%;
+    transition:background .2s ease, color .2s ease;
+  }
+  .qr-close:hover{background:rgba(239,226,192,0.08); color:var(--cream);}
+  .qr-card h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    color:var(--cream);
+    margin:6px 0 22px;
+    line-height:1.4;
+  }
+  .qr-image{
+    width:180px;
+    height:180px;
+    margin:0 auto;
+    border-radius:var(--radius);
+    background:#fff;
+    padding:10px;
+    border:2px solid var(--gold);
+  }
+  .qr-fallback{
+    margin-top:20px;
+    font-size:13.5px;
+    color:var(--ash);
+  }
+  .qr-fallback a{
+    color:var(--gold-soft);
+    border-bottom:1px solid var(--gold-soft);
+  }
+
+  /* ---------- VISION / MISSION ---------- */
+  .vm-block{
+    padding:36px 40px;
+    border-radius:var(--radius);
+    margin-bottom:22px;
+  }
+  .vm-vision{
+    background:linear-gradient(135deg, var(--rust) 0%, var(--maroon) 100%);
+  }
+  .vm-vision p{color:var(--cream);}
+  .vm-mission{
+    background:var(--cream);
+  }
+  .vm-mission p{color:var(--maroon);}
+  .vm-label{
+    font-weight:800;
+    margin-right:4px;
+  }
+  .vm-block p{
+    font-size:19px;
+    line-height:1.55;
+    max-width:900px;
+  }
+
+  /* ---------- BENEFITS ---------- */
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(32px,4vw,46px);
+  }
+  .benefits-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .benefit-card{
+    padding:30px 26px;
+    border-radius:var(--radius);
+    min-height:230px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .benefit-card.rust{background:var(--maroon); color:var(--cream);}
+  .benefit-card.gold{background:var(--gold-soft); color:var(--maroon);}
+  .benefit-card h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:17px;
+    letter-spacing:0.01em;
+  }
+  .benefit-card ul{display:flex; flex-direction:column; gap:10px; font-size:14.5px;}
+  .benefit-card li{position:relative; padding-left:16px;}
+  .benefit-card li::before{
+    content:"—";
+    position:absolute; left:0; top:0;
+    opacity:0.7;
+  }
+
+  @media (max-width:980px){
+    .benefits-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .benefits-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- EVENTS ---------- */
+  .events-section{background:var(--char);}
+  .events-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .event-card{
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--char-2);
+  }
+  .event-stage{
+    position:relative;
+    height:200px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(201,154,62,0.35), transparent 55%),
+      linear-gradient(180deg, #241a14 0%, #100b08 100%);
+  }
+  .event-stage .beam{
+    position:absolute;
+    top:-20%;
+    left:50%;
+    width:2px;
+    height:140%;
+    background:linear-gradient(180deg, rgba(224,188,110,0.7), transparent 70%);
+    transform-origin:top center;
+  }
+  .event-stage .beam.b1{transform:translateX(-40px) rotate(-14deg);}
+  .event-stage .beam.b2{transform:translateX(-10px) rotate(-4deg);}
+  .event-stage .beam.b3{transform:translateX(20px) rotate(6deg);}
+  .event-stage .beam.b4{transform:translateX(48px) rotate(15deg);}
+  .event-stage .silhouette{
+    position:absolute;
+    bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:46px;height:80px;
+    background:#0b0806;
+    border-radius:22px 22px 0 0;
+  }
+  .event-stage .silhouette::before{
+    content:"";
+    position:absolute;
+    top:-16px; left:50%;
+    transform:translateX(-50%);
+    width:20px;height:20px;
+    border-radius:50%;
+    background:#0b0806;
+  }
+  .event-meta{
+    padding:18px 20px 22px;
+  }
+  .event-meta .tag{
+    font-size:12px;
+    color:var(--gold-soft);
+    font-weight:700;
+    letter-spacing:0.03em;
+    margin-bottom:6px;
+  }
+  .event-meta h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--cream);
+  }
+  .event-meta p{
+    font-size:13.5px;
+    color:var(--ash);
+    margin-top:6px;
+  }
+
+  @media (max-width:980px){.events-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.events-grid{grid-template-columns:1fr;}}
+
+  /* ---------- COMPARISON ---------- */
+  .compare-table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+  }
+  .compare-table th,.compare-table td{
+    padding:20px 22px;
+    text-align:left;
+    font-size:15px;
+    border-bottom:1px solid var(--line);
+  }
+  .compare-table thead th{
+    font-family:'Rye', serif;
+    font-size:18px;
+    padding:18px 22px;
+  }
+  .compare-table thead th:first-child{background:var(--char-2); color:var(--cream);}
+  .compare-table thead th.col-gig{background:var(--rust); color:var(--cream);}
+  .compare-table thead th.col-oth{background:var(--cream); color:var(--maroon);}
+  .compare-table tbody td:first-child{color:var(--cream-dim); background:var(--char-2); font-weight:600;}
+  .compare-table tbody td.col-gig{background:rgba(124,36,21,0.14); text-align:center; font-size:20px;}
+  .compare-table tbody td.col-oth{background:rgba(0,0,0,0.18); text-align:center; font-size:20px; color:#8a3c3c;}
+  .yes{color:#7ec87f;}
+  .no{color:#c65a4c;}
+  .compare-table tbody tr:last-child td{border-bottom:none;}
+  .table-scroll{overflow-x:auto;}
+
+  @media (max-width:700px){
+    .compare-table th,.compare-table td{padding:14px 14px; font-size:13.5px;}
+    .compare-table thead th{font-size:15px;}
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-section{
+    background:linear-gradient(180deg, var(--void) 0%, #140d0a 100%);
+    position:relative;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .contact-badge{
+    width:220px;
+    aspect-ratio:1/1;
+    position:relative;
+    margin-bottom:8px;
+  }
+  .contact-badge svg{width:100%;height:100%;}
+  .contact-heading{
+    font-size:clamp(32px,4.4vw,52px);
+    margin-top:18px;
+  }
+  .contact-list{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  .contact-list dt{
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    color:var(--gold-soft);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .contact-list dd a{
+    font-size:19px;
+    color:var(--cream);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .contact-list dd a:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  @media (max-width:860px){
+    .contact-grid{grid-template-columns:1fr; gap:40px;}
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-size:13px;
+    color:var(--ash);
+  }
+  .footer-inner .wordmark{font-size:20px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo"><span class="dot"></span>GIGTICK</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav.links').classList.toggle('open')">☰</button>
+    <nav class="links">
+      <a href="#vision">Vision</a>
+      <a href="#breweries">For Breweries</a>
+      <a href="#events">Events</a>
+      <a href="#compare">Why Gigtick</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#" class="nav-cta" id="partnerBtn">Partner your venue</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="presented">Presented by <b>Onekind Creations</b></p>
+        <h1>Music and Brews<br>Unite for <em>Talent</em></h1>
+        <p class="lede">Gigtick is an artist-driven initiative empowering new musicians — three genres, one night, one venue. We connect rising artists with breweries to build gigs neither could pull off alone.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary" id="partnerBtnHero">Book a gig night</a>
+          <a href="#compare" class="btn btn-ghost">See why it works</a>
+        </div>
+      </div>
+      <div class="vinyl-stage" aria-hidden="true">
+        <div class="vinyl">
+          <img src="assets/gigtick-logo.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JUKEBOX -->
+  <section class="jukebox" id="jukebox">
+    <div class="wrap jukebox-inner">
+      <div class="jukebox-disc" id="jukeboxDisc">
+        <img src="assets/gigtick-logo.png" alt="">
+      </div>
+      <div class="jukebox-text">
+        <p class="eyebrow">Try the room</p>
+        <h3>Paste a track, hit play</h3>
+        <p>Drop any YouTube link and keep the music going while you browse.</p>
+      </div>
+      <div class="jukebox-controls">
+        <button class="play-btn" id="playBtn" disabled aria-label="Play">▶</button>
+        <div class="track-info">
+          <div class="track-name" id="trackName">No track loaded</div>
+          <input type="text" class="yt-input" id="ytInput" placeholder="Paste a YouTube link…" aria-label="YouTube link">
+        </div>
+        <button class="btn btn-ghost" id="ytLoadBtn" type="button">Load track</button>
+      </div>
+      <div id="ytPlayerHolder" class="yt-player-holder"></div>
+    </div>
+  </section>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- VISION / MISSION -->
+  <section id="vision">
+    <div class="wrap">
+      <div class="vm-block vm-vision">
+        <p><span class="vm-label">Vision:</span>Gigtick is an artist-driven initiative that wants to culture local audiences across multiple genres in one night. While other management companies require a high fee, we offer three different genres for the price of one.</p>
+      </div>
+      <div class="vm-block vm-mission">
+        <p><span class="vm-label">Mission:</span>We believe great music and great venues deserve each other. Gigtick connects artists with breweries to create memorable live experiences, empowering performers and elevating spaces that celebrate community and creativity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS FOR BREWERIES -->
+  <section id="breweries">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">For venue partners</p>
+        <h2>Benefits for breweries</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card rust">
+          <h3>Engaged audience</h3>
+          <ul>
+            <li>Breweries attract social, experience-seeking crowds</li>
+            <li>Perfect setting for live performances</li>
+          </ul>
+        </div>
+        <div class="benefit-card gold">
+          <h3>Business growth</h3>
+          <ul>
+            <li>Live gigs boost footfall and sales</li>
+            <li>Increases customer retention and brand recall</li>
+          </ul>
+        </div>
+        <div class="benefit-card rust">
+          <h3>Community connect</h3>
+          <ul>
+            <li>Promotes local talent and culture</li>
+            <li>Builds loyal, repeat audiences</li>
+          </ul>
+        </div>
+        <div class="benefit-card gold">
+          <h3>Consistent opportunities</h3>
+          <ul>
+            <li>Regular events create steady exposure for artists</li>
+            <li>Strengthens partnerships between venues and performers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="events-section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">On stage</p>
+        <h2>Few events we curated</h2>
+      </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-stage">
+            <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div>
+            <div class="silhouette"></div>
+          </div>
+          <div class="event-meta">
+            <p class="tag">Acoustic Night</p>
+            <h3>Solo vocalist set</h3>
+            <p>Unplugged originals, small-room energy.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-stage">
+            <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div>
+            <div class="silhouette"></div>
+          </div>
+          <div class="event-meta">
+            <p class="tag">Indie Showcase</p>
+            <h3>Rising vocalist debut</h3>
+            <p>First live performance of an unreleased track.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-stage">
+            <div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div>
+            <div class="silhouette"></div>
+          </div>
+          <div class="event-meta">
+            <p class="tag">Genre-Bend</p>
+            <h3>Back-to-back handoff</h3>
+            <p>Three artists, three genres, one continuous set.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-stage" style="height:200px; background:linear-gradient(180deg,#241a14,#100b08); display:flex; align-items:center; justify-content:center;">
+            <p style="font-family:'Rye',serif; color:var(--gold-soft); font-size:14px; text-align:center; padding:0 20px;">Behind the bar,<br>after the last set</p>
+          </div>
+          <div class="event-meta">
+            <p class="tag">Venue Floor</p>
+            <h3>Crowd, unfiltered</h3>
+            <p>The room after the encore — where the loyalty gets built.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section id="compare">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The difference</p>
+        <h2>Gigtick vs. others</h2>
+      </div>
+      <div class="table-scroll">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Perks</th>
+              <th class="col-gig">Gigtick</th>
+              <th class="col-oth">Others</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Artist-driven</td>
+              <td class="col-gig"><span class="yes">✓</span></td>
+              <td class="col-oth"><span class="no">✕</span></td>
+            </tr>
+            <tr>
+              <td>Multi-genre performances</td>
+              <td class="col-gig"><span class="yes">✓</span></td>
+              <td class="col-oth"><span class="no">✕</span></td>
+            </tr>
+            <tr>
+              <td>Unreleased originals debuted at venue</td>
+              <td class="col-gig"><span class="yes">✓</span></td>
+              <td class="col-oth"><span class="no">✕</span></td>
+            </tr>
+            <tr>
+              <td>20% longer sets, back-to-back</td>
+              <td class="col-gig"><span class="yes">✓</span></td>
+              <td class="col-oth"><span class="no">✕</span></td>
+            </tr>
+            <tr>
+              <td>Selection process</td>
+              <td class="col-gig" style="font-size:14px; font-weight:700;">Artist-picked</td>
+              <td class="col-oth" style="font-size:14px; font-weight:700;">Artist managers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="contact-badge" aria-hidden="true">
+          <svg viewBox="0 0 220 220">
+            <circle cx="80" cy="80" r="55" fill="none" stroke="var(--rust-2)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="140" cy="80" r="55" fill="none" stroke="var(--rust-2)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="80" cy="140" r="55" fill="none" stroke="var(--rust-2)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="140" cy="140" r="55" fill="none" stroke="var(--rust-2)" stroke-width="1.5" opacity="0.7"/>
+            <rect x="60" y="60" width="100" height="100" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h2 class="contact-heading">Get in touch<br>with us today!</h2>
+      </div>
+      <dl class="contact-list">
+        <div>
+          <dt>Email</dt>
+          <dd><a href="mailto:info@gigtick.in">info@gigtick.in</a> / <a href="mailto:mk@gigtick.in">mk@gigtick.in</a></dd>
+        </div>
+        <div>
+          <dt>Social media</dt>
+          <dd><a href="https://instagram.com/gigtick" target="_blank" rel="noopener">@gigtick</a></dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd><a href="tel:+919845016307">MK — 98450 16307</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="wordmark">GIGTICK</span>
+    <span>Empowering new musicians, one venue at a time.</span>
+  </div>
+</footer>
+
+<!-- PARTNER QR MODAL -->
+<div class="qr-modal" id="qrModal" aria-hidden="true">
+  <div class="qr-backdrop" id="qrBackdrop"></div>
+  <div class="qr-card" role="dialog" aria-modal="true" aria-labelledby="qrHeading">
+    <button class="qr-close" id="qrClose" aria-label="Close">✕</button>
+    <p class="eyebrow">Partner with Gigtick</p>
+    <h3 id="qrHeading">Scan the QR code to chat with our Partner Executive</h3>
+    <img class="qr-image" src="assets/partner-qr.png" alt="WhatsApp QR code to chat with Gigtick's partner executive">
+    <p class="qr-fallback">On desktop? <a href="https://wa.me/919845016307?text=Hi%2C%20I%27d%20like%20to%20partner%20my%20venue%20with%20Gigtick" target="_blank" rel="noopener">Open the chat directly</a></p>
+  </div>
+</div>
+
+<script>
+  // Smooth in-page scrolling that never touches location.hash —
+  // avoids the outer file viewer treating #anchors as a fresh navigation.
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+        document.querySelector('nav.links').classList.remove('open');
+      }
+    });
+  });
+
+  // Jukebox — YouTube-powered background player
+  var ytPlayer = null;
+  var ytReady = false;
+
+  function extractYouTubeId(url){
+    var patterns = [
+      /(?:youtube\.com\/watch\?v=)([\w-]{11})/,
+      /(?:youtu\.be\/)([\w-]{11})/,
+      /(?:youtube\.com\/embed\/)([\w-]{11})/,
+      /(?:youtube\.com\/shorts\/)([\w-]{11})/
+    ];
+    for(var i=0;i<patterns.length;i++){
+      var m = url.match(patterns[i]);
+      if(m) return m[1];
+    }
+    return null;
+  }
+
+  function onYouTubeIframeAPIReady(){
+    ytReady = true;
+  }
+  window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+  (function(){
+    var input = document.getElementById('ytInput');
+    var loadBtn = document.getElementById('ytLoadBtn');
+    var playBtn = document.getElementById('playBtn');
+    var trackName = document.getElementById('trackName');
+    var disc = document.getElementById('jukeboxDisc');
+    var pendingId = null;
+
+    function setPlayingState(isPlaying){
+      playBtn.textContent = isPlaying ? '❚❚' : '▶';
+      disc.classList.toggle('playing', isPlaying);
+    }
+
+    function createPlayer(videoId){
+      ytPlayer = new YT.Player('ytPlayerHolder', {
+        height: '1',
+        width: '1',
+        videoId: videoId,
+        playerVars: { autoplay: 1 },
+        events: {
+          onReady: function(e){
+            e.target.playVideo();
+            playBtn.disabled = false;
+          },
+          onStateChange: function(e){
+            if(e.data === YT.PlayerState.PLAYING) setPlayingState(true);
+            else if(e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) setPlayingState(false);
+          }
+        }
+      });
+    }
+
+    function loadTrack(){
+      var id = extractYouTubeId(input.value.trim());
+      if(!id){
+        trackName.textContent = 'That doesn\'t look like a YouTube link';
+        return;
+      }
+      trackName.textContent = 'Loading track…';
+      if(!ytReady){
+        // API script still loading — wait for it, then retry once ready
+        pendingId = id;
+        var waitForApi = setInterval(function(){
+          if(ytReady){
+            clearInterval(waitForApi);
+            if(pendingId) createPlayer(pendingId);
+          }
+        }, 200);
+        return;
+      }
+      if(ytPlayer && typeof ytPlayer.loadVideoById === 'function'){
+        ytPlayer.loadVideoById(id);
+        playBtn.disabled = false;
+      } else {
+        createPlayer(id);
+      }
+      trackName.textContent = 'Now playing from YouTube';
+    }
+
+    loadBtn.addEventListener('click', loadTrack);
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter') loadTrack();
+    });
+
+    playBtn.addEventListener('click', function(){
+      if(!ytPlayer) return;
+      var state = ytPlayer.getPlayerState();
+      if(state === YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
+      else ytPlayer.playVideo();
+    });
+  })();
+
+  // Partner QR modal
+  (function(){
+    var modal = document.getElementById('qrModal');
+    var backdrop = document.getElementById('qrBackdrop');
+    var closeBtn = document.getElementById('qrClose');
+    var openers = [document.getElementById('partnerBtn'), document.getElementById('partnerBtnHero')];
+
+    function openModal(e){
+      if(e) e.preventDefault();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+    openers.forEach(function(btn){
+      if(btn) btn.addEventListener('click', openModal);
+    });
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeModal();
+    });
+  })();
+</script>
+</body>
+</html>
